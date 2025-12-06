@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Facturas Municipal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Portal de Pagos Municipal</h1>
+        </header>
+
+        <div class="search-box">
+            <select id="criterio">
+                <option value="finca">Número de Finca</option>
+                <option value="persona">Cédula Propietario</option>
+            </select>
+            <input type="text" id="valorBusqueda" placeholder="Ej: F-0001">
+            <button onclick="consultarEstado()">Consultar</button>
+        </div>
+
+        <div id="resultados" class="hidden">
+            <div id="infoPropiedad" class="card"></div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab('pendientes')">Facturas Pendientes</button>
+                <button class="tab-btn" onclick="openTab('pagadas')">Historial Pagos</button>
+            </div>
+
+            <div id="pendientes" class="tab-content active">
+                <table id="tablaPendientes">
+                    <thead>
+                        <tr>
+                            <th># Factura</th>
+                            <th>Fecha</th>
+                            <th>Monto</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div id="pagadas" class="tab-content">
+                <table id="tablaPagadas">
+                    <thead>
+                        <tr>
+                            <th>Comprobante</th>
+                            <th>Fecha Pago</th>
+                            <th>Monto Pagado</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
